@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Gift</title>
+    <link rel="stylesheet" href="main2.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="title-card">
+        <h1>Buon Natale, Papà!</h1>
+        <p>Scegli con quale macchina correrai al Mugello o a Vallelunga:</p>
+    </div>
+    <form id="giftForm">
+        <div class="options-container">
+            <div class="option">
+                <img src="SF90.jpg" alt="SF90 Stradale">
+                <input type="radio" id="gift1" name="gift" value="2 giri su una SF90 al Mugello o Vallelunga">
+                <label for="gift1">2 giri su una SF90</label>
+            </div>
+            <div class="option">
+                <img src="812Superfast.jpeg" alt="812 Superfast">
+                <input type="radio" id="gift2" name="gift" value="3 giri su una 812 Superfast al Mugello o Vallelunga">
+                <label for="gift2">3 giri su una 812 Superfast</label>
+            </div>
+        </div>
+        <button type="submit">Conferma</button>
+    </form>
+    <p id="message"></p>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Perfetto!</h2>
+            <p>Stiamo processando la sua scelta, le arriverà un coupon per email nei prossimi giorni.</p>
+            <button id="closeModal">Chiudi</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('giftForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedGift = document.querySelector('input[name="gift"]:checked');
+            if (selectedGift) {
+                // document.getElementById('message').textContent = `Hai scelto: ${selectedGift.value}. Grazie!`;
+                // Show the modal
+                const modal = document.getElementById('modal');
+                modal.style.display = 'flex'; // Center the modal
+            } else {
+                document.getElementById('message').textContent = 'Per favore, seleziona un’opzione.';
+            }
+        });
+
+        // Close modal functionality
+        document.getElementById('closeModal').addEventListener('click', function() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
